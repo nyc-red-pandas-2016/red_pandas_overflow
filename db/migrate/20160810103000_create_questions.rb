@@ -5,7 +5,6 @@ class CreateQuestions < ActiveRecord::Migration
       t.text    :body, null: false
       t.integer :user_id
 
-
       t.timestamps
     end
   end
