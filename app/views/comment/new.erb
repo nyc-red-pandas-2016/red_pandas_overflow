@@ -1,0 +1,20 @@
+<!-- NEW COMMENT PAGE -->
+
+<div class="container">
+  <h2>Add Your Comment!</h2>
+
+<% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<form class="" action="/comments" method="post">
+  <label for="comment[body]">Comment:</label>
+  <input type="text" name="comment[username]"><br><br>
+  <input type="submit" value="Register"><br>
+</form>
+
+</div>
