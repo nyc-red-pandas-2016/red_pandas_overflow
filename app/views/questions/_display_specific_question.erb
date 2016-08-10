@@ -1,14 +1,12 @@
 <h1>Question: <%= @question.title %></h1>
+  <div class="container">
+  <%= @question.body %>
+  </div>
   <% @question.answers.each do |answer| %>
     <ul>
-      <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%d %b %y") %></li>
+      <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%d %b %y") %><br>
+      </li>
     </ul><br>
+    <a href="/answers/new">Add an Answer</a>
   <% end %>
 
-  <h3>Answer Reply:</h3>
-
-  <form action="/answers/new" method="post">
-    <input type="text" name="comment[body]" placeholder="Add answer">
-    <input type="hidden" name="comment[author]" value="<%= current_user.username %>" >
-    <input type="submit" value="Post Answer">
-  </form>

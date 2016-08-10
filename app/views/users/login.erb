@@ -1,14 +1,10 @@
 <div class=container>
   <h2>Log In</h2><br>
-<% if @message %>
-    <p id="banner"><%= @message %></li>
-<% end %>
-
 
 <% if @errors %>
     <ul>
     <% @errors.each do |error| %>
-      <li id="banner"><%= error %></li>
+      <li><%= error %></li>
     <% end %>
     </ul>
  <% end %>

@@ -1,16 +1,13 @@
 get '/answers/new' do
-  erb :'answers/new'
 end
 
-
 post '/answers' do
-  answer = Answer.new(params[:comment][:body])
-  @message = "Answer Added!"
+  answer = Answer.new(params[:answer])
   if answer.save
-    erb :'index'
+    redirect '/questions/#{answer.id}'
   else
     @errors = answer.errors.full_messages
-    erb :'/answers/new'
+    erb :'/questions/_display_specific_question'
   end
 end
 
