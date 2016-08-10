@@ -8,13 +8,17 @@
       <a href="/questions">Questions</a>
       <a href="/users/login">Log In</a>
       <a href="/users/new">Register</a>
-    <% end %>
+  <% end %>
   </nav>
 </div>
 <div class="container">
-<h1>Welcome to Red Panda Overflow!</h1>
+<h1>Welcome to our website!!</h1>
 </div>
 <div class="conatiner">
   <h2>Popular questions:</h2>
-  <p>~show last 10 questions~</p>
+  <ul>
+  <% @recent_questions.each do |question| %>
+    <li><%= question %></li>
+  <% end %>
+  </ul>
 </div>
