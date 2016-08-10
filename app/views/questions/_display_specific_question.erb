@@ -4,9 +4,25 @@
   </div>
   <% @question.answers.each do |answer| %>
     <ul>
-      <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%d %b %y") %><br>
-      </li>
+      <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %></li>
     </ul><br>
-    <a href="/answers/new">Add an Answer</a>
   <% end %>
 
+  <h3>Answer Reply:</h3>
+
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <ul>
+        <li><%= error %></li>
+      </ul>
+      <% end %>
+  <% end %>
+
+  <form action="/answers" method="post">
+    <input type="text" name="answer[body]" placeholder="Add answer">
+    <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
+    <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
+     <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
+
+    <input type="submit" value="Post Answer">
+  </form>

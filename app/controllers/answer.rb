@@ -1,11 +1,14 @@
 get '/answers/new' do
+  erb :'/answers/new'
 end
 
 post '/answers' do
   answer = Answer.new(params[:answer])
   if answer.save
-    redirect '/questions/#{answer.id}'
+    @question = Question.find(params[:answer][:question_id])
+    erb :'/questions/_display_specific_question'
   else
+    @question = Question.find(params[:answer][:question_id])
     @errors = answer.errors.full_messages
     erb :'/questions/_display_specific_question'
   end
