@@ -4,7 +4,7 @@ end
 
 
 post '/comments' do
-  comment = User.new(params[:comment][:body], :)
+  comment = User.new(params[:comment][:body])
   @message = "Comment Added!"
   if comment.save
     erb :'index'

@@ -4,12 +4,12 @@ end
 
 
 post '/users' do
-  user = User.new(params[:user])
+  @user = User.new(params[:user])
   @message = "Accout Successfully Created!"
-  if user.save
+  if @user.save
     erb :'index'
   else
-    @errors = user.errors.full_messages
+    @errors = @user.errors.full_messages
     erb :'/users/new'
   end
 end
@@ -19,8 +19,8 @@ get '/users/login' do
 end
 
 post '/users/login' do
-  user = User.find_by(username: params[:user][:username])
-  if user && user.authenticate(params[:user][:password])
+  @user = User.find_by(username: params[:user][:username])
+  if @user && @user.authenticate(params[:user][:password])
     session[:user_id] = current_user
     erb :'/users/show'
   else
@@ -39,8 +39,8 @@ get '/users/logout' do
 end
 
 delete '/users' do
-  user = current_user
-  user.delete
+  @user = current_user
+  @user.delete
   redirect :index
 end
 
