@@ -5,9 +5,9 @@ end
 
 post '/users' do
   @user = User.new(params[:user])
-  @message = "Accout Successfully Created!"
   if @user.save
-    erb :'index'
+    session[:user_id] = @user.id
+    erb :'/users/login'
   else
     @errors = @user.errors.full_messages
     erb :'/users/new'
@@ -29,18 +29,11 @@ post '/users/login' do
   end
 end
 
+get '/users/logout' do
+  session.clear
+  redirect '/'
+end
+
 get '/users/:id' do
   erb :'users/show'
 end
-
-get '/users/logout' do
-  session.clear
-  erb :'index'
-end
-
-delete '/users' do
-  @user = current_user
-  @user.delete
-  redirect :index
-end
-

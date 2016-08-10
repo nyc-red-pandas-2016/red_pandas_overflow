@@ -1,25 +1,12 @@
 <div class="container">
-  <nav>
-    <% if loggedin? %>
-      <a href="/questions">Questions</a>
-      <a href="/users/<% current_user.id %>">Profile</a>
-      <a href="/users/logout">Log Out</a>
-    <% else %>
-      <a href="/questions">Questions</a>
-      <a href="/users/login">Log In</a>
-      <a href="/users/new">Register</a>
-  <% end %>
-  </nav>
-</div>
-<div class="container">
 <h1>Welcome to our website!!</h1>
 </div>
 <div class="conatiner">
   <h2>Popular questions:</h2>
   <ul>
-  <% @recent_questions.each do |question| %>
-    <li><%= question %></li>
-  <% end %>
+    <% display_latest_questions.each do |question| %>
+    <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+    <% end %>
   </ul>
 </div>
 
