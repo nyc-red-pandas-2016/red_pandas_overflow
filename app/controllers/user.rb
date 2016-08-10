@@ -35,5 +35,6 @@ get '/users/logout' do
 end
 
 get '/users/:id' do
+  @user_questions = User.find_by(id: params[:id]).questions
   erb :'users/show'
 end

@@ -7,8 +7,9 @@
     <th>Question</th>
     <th>Date Asked</th>
   </tr>
-  <tr>
-    <td><a href="">question</a></td>
-    <td>question.created_at for user</td>
+    <% @user_questions.each do |question| %>
+    <tr>
+      <td><a href="/questions/<%= question.id %>"><%= question.title %></a></td>
+    <td><%= question.created_at.strftime("%b %d, 20%y") %><% end %></td>
   </tr>
 </div>
