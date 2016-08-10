@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>New Question</h2>
+  <form action="/questions" method="post">
+    <label for="question">Title:</label>
+    <input type="text" name="question[title]">
+    <label for="question">Body:</label>
+    <input type="text" name="question[body]">
+    <input type="hidden" name="question[user_id]" value="<% current_user.id %>">
+    <input type="submit" value="Submit">
+  </form>
+</div>
