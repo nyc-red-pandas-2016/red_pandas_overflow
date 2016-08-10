@@ -16,5 +16,10 @@
 </div>
 <div class="conatiner">
   <h2>Popular questions:</h2>
-  <p>~show last 10 questions~</p>
+  <ul>
+  <% @recent_questions each do |question| %>
+    <li><%= question %></li>
+  <% end %>
+  </ul>
+
 </div>
