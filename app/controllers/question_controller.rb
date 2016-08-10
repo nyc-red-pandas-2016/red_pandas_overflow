@@ -4,5 +4,6 @@ get '/questions/show' do
 end
 
 get '/questions/:id' do
-
+  @question = Question.find(params[:id])
+  erb :'/questions/_display_specific_question'
 end
