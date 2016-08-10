@@ -109,7 +109,7 @@ content_for_answers_1 = [
 
 content_for_answers_2 = [
   { :body => "Fill the hole with water, and the hippopatomus will float out. They are good swimmers, you know.",
-    :author  => "Gandhi",
+    :author  => "mermaidlady",
     :user_id => 5,
     :question_id => 9
     },
@@ -135,5 +135,35 @@ content_for_answers_2 = [
     },
 ]
 
+content_for_answers_3 = [
+  { :body => "Do good, love mercy and walk humbly.",
+    :author  => "brocolisucks234",
+    :user_id => 1,
+    :question_id => 1
+    },
+  { :body => "Couldn't disagree more.  Flux capacitor is the only way to go. It's what makes time travel possible. ",
+    :author  => "chainsawbucktooth",
+    :user_id => 4,
+    :question_id => 6
+    },
+    { :body => "I don't think it is was about state control so much as it was a feminist critique. Victor fears the female monster, were she to be created, would have autonomy, that she would decide, “I don\’t want to be part of this bargain. I don\’t like this other creature I\’m supposed to be a companion with. I hate him.” In other words, he’s afraid that she might have her own way of thinking. Female autonomy, in Victor’s eyes, becomes a terrible threat.",
+    :author  => "mermaidlady",
+    :user_id => 1,
+    :question_id => 8
+    },
+    { :body => "Duane Reade is the harbinger of the True Path. We, uh, I mean, they bring Goodness and Truth to NYC and to the World. Do not fear their growing power over your.",
+    :author  => "resisistance=futile",
+    :user_id => 4,
+    :question_id => 5
+    },
+    { :body => "I don\'t like the premise of the question, which presumes that the two are mutually exculsive. You can be both liked and respected. On the other hand, there is a difference between the two concepts. This involves deeper discussion",
+    :author  => "chainsawbucktooth",
+    :user_id => 4,
+    :question_id => 7
+    },
+]
+
+
 Answer.create!(content_for_answers_1)
 Answer.create!(content_for_answers_2)
+Answer.create!(content_for_answers_3)
