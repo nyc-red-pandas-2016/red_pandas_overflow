@@ -1,1 +1,19 @@
-index.erb
+<div class="container">
+  <nav>
+    <% if current_user %>
+      <a href="">Questions</a>
+      <a href="">Profile</a>
+    <% else %>
+      <a href="">Questions</a>
+      <a href="/users/login">Log In</a>
+      <a href="/users/new">Register</a>
+    <% end %>
+  </nav>
+</div>
+<div class="container">
+<h1>Welcome to Red Panda Overflow!</h1>
+</div>
+<div class="conatiner">
+  <h2>Popular questions:</h2>
+  ~stuff~
+</div>
