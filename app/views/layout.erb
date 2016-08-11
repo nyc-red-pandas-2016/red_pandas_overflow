@@ -25,25 +25,23 @@
       <a class="navbar-brand" href="/">Cat Overflow</a>
     </div>
     <ul class="nav navbar-nav">
-      <% if loggedin? %>
-      <li class="active"><a href="/">Home</a></li>
-      <li><a href="/questions/show">Questions</a></li>
-      <li><a href="/questions/new">Ask A Question</a></li>
+      <% if current_user != nil %>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/questions/show">Questions</a></li>
+        <li><a href="/questions/new">Ask A Question</a></li>
+        </ul>
+         <ul class="nav navbar-nav navbar-right">
+          <li><img src="/images/glyphicons-542-cat.png"><a href="/users/<%= current_user.id %>"> Profile</a></li>
+          <li><a href="/users/logout">Log Out</a></li>
+        </ul>
       <% else %>
-      <li class="active"><a href="/">Home</a></li>
-      <li><a href="/questions/show">Questions</a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+          <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/questions/show">Questions</a></li>
       <% end %>
-    </ul>
-    <% if !loggedin? %>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-      <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-    <% else %>
-     <ul class="nav navbar-nav navbar-right">
-      <li><img src="/images/glyphicons-542-cat.png"><a href="/users/<%= current_user.id %>"> Profile</a></li>
-    </ul>
-    <% end %>
   </div>
 </nav>
 <div class="container">
