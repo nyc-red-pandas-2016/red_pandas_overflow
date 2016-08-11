@@ -1,31 +1,33 @@
 <h1>Question: <%= @question.title %></h1>
   <div class="container">
-  <%= @question.body %>
+  <%= @question.body %><br>
+  <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
   <% if @question.comments %>
+    <ul>
       <% @question.comments.each do |comment|%>
-      <p class="comment"><%= comment.body %></p>
-      <p class="comment"><%= comment.author %></p>
+      <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
+    </ul>
       <% end %>
   <% end %>
-
-  <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
   </div>
+
+  <h3><b>Answers:</b></h3>
   <% @question.answers.each do |answer| %>
     <ul>
-      <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %></li>
-
-<!--     Print comments for each answer -->
-      <% if answer.comments %>
-        <% answer.comments.each do |comment|%>
-          <p class="comment"><%= comment.body %></p>
-          <p class="comment"><%= comment.author %></p>
+      <li><b>Answer: </b><p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %><br>
+        <% if answer.comments %>
+          <% answer.comments.each do |comment|%>
+          <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
         <% end %>
       <% end %>
+
+<!--     Print comments for each answer -->
+
 
     </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
   <% end %>
 
-  <h3>Answer Reply:</h3>
+  <h3>Your Answer:</h3>
 
   <% if @errors %>
     <% @errors.each do |error| %>
