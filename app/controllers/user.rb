@@ -21,10 +21,11 @@ end
 post '/users/login' do
   @user = User.find_by(username: params[:user][:username])
   if @user && @user.authenticate(params[:user][:password])
+    @user_questions = @user.questions
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   else
-    @errors = ['Invalid Login Credentials']
+    @errors = ['Invalid username or password.']
     erb :'/users/login'
   end
 end

@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Register a New Account!</h2>
+  <h5>*password must be at least 6 characters</h5>
 
 <% if @errors %>
     <ul>
@@ -11,12 +12,16 @@
 
 <form class="form-horizontal" role="form" action="/users" method="post">
   <label class="control-label col-sm-1" for="user[username]">Username:</label>
-  <input type="text" name="user[username]"><br><br>
+  <div class="col-xs-4">
+  <input class="form-control input-sm" type="text" name="user[username]"></div><br><br>
     <label class="control-label col-sm-1" for="user[email]">Email:</label>
-  <input type="text" name="user[email]"><br><br>
+  <div class="col-xs-4">
+  <input class="form-control input-sm" type="text" name="user[email]"></div><br><br>
   <label class="control-label col-sm-1" for="user[password]">Password:</label>
-  <input type="password" name="user[password]"><br><br>
-  <input type="submit" class = ".btn-default" value="Register"><br>
+  <div class="col-xs-4">
+  <input class="form-control input-sm" type="password" name="user[password]"></div><br><br>
+  <div class="col-sm-offset-1 col-sm-10">
+  <button type="submit" class="btn btn-default">Register</button></div><br>
 </form>
 
 </div>

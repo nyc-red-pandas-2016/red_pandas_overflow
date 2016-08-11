@@ -28,9 +28,9 @@
           <tr>
             <td>
               <div>
-                <a class="up_button" href="/vote/<%= answer.id %>/up">&#x21E7;</a>
+                <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
                   <span><%= answer.votes.sum(:vote_count) %></span>
-                <a class="down_button" href="/vote/<%= answer.id %>/down">&#x21E9;</a>
+                <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
               </div>
             </td>
           </tr>
