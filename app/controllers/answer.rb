@@ -5,8 +5,7 @@ end
 post '/answers' do
   answer = Answer.new(params[:answer])
   if answer.save
-    @question = Question.find(params[:answer][:question_id])
-    erb :'/questions/_display_specific_question'
+    redirect "/questions/#{params[:answer][:question_id]}"
   else
     @question = Question.find(params[:answer][:question_id])
     @errors = answer.errors.full_messages
