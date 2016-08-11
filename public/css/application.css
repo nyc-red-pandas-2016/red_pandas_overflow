@@ -1,3 +1,9 @@
-.form-control input-lg.custom {
-  height: 500px;
+body {
+    padding-top: 65px;
+}
+
+.tab-pane{
+  height:615px;
+  overflow-y:scroll;
+  width:100%;
 }
