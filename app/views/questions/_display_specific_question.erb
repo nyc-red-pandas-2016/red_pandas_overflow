@@ -69,6 +69,11 @@
   <% @question.answers.each do |answer| %>
       <div class="panel panel-info">
         <div class="panel-heading" id="answer_heading"><%= answer.body %></div><div class="panel-body">Author: <%= answer.author %><br> Posted: <%= answer.created_at.strftime("%b %d, 20%y") %>
+            <% if answer.tags %>
+              <% answer.tags.each do |tag|%>
+                <%= tag.name %>
+              <% end %>
+            <% end %>
             <div>
               <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
                 <span><%= answer.votes.sum(:vote_count) %></span>
