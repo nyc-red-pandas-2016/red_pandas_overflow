@@ -15,7 +15,8 @@
   <input input class="form-control input-lg" type="text" name="answer[body]" placeholder="Add answer"></div>
   <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
   <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
-
+  <label class="control-label col-sm-1"for="tag">Tags (optional):</label>
+  <input type="text" name="tag[name]">
   <button type="submit" class="btn btn-default">Post Answer</button>
 </form>
 <!-- ajax for this file -->

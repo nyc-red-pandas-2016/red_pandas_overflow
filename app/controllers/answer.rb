@@ -7,6 +7,7 @@ end
 post '/answers' do
   answer = Answer.new({body: meow_answer(params[:answer][:body]), author: meow_answer(params[:answer][:author]), user_id: params[:answer][:user_id], question_id: params[:answer][:question_id]})
   if answer.save
+    answer.tags.create(split_into_tags(params[:tag][:name]))
     redirect "/questions/#{params[:answer][:question_id]}"
   else
     @question = Question.find(params[:answer][:question_id])

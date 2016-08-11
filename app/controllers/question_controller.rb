@@ -7,7 +7,7 @@ end
 post '/questions' do
   @question = Question.new({title: meow_question(params[:question][:title]), body: meow_question(params[:question][:body]), user_id: params[:question][:user_id]})
   if @question.save
-    @question.tags.create(params[:tag])
+    @question.tags.create(split_into_tags((params[:tag][:name])).first)
     redirect '/questions/show'
   else
     @errors = @question.errors.full_messages
