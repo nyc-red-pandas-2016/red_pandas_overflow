@@ -1,5 +1,5 @@
 get '/comments/new' do
-  erb :'users/new'
+  erb :'comments/new'
 end
 
 
