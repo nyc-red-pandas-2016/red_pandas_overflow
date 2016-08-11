@@ -7,6 +7,7 @@ end
 post '/questions' do
   @question = Question.new(params[:question])
   if @question.save
+    @question.tags.create(params[:tag])
     redirect '/questions/show'
   else
     @errors = @question.errors.full_messages
