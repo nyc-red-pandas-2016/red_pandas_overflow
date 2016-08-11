@@ -1,11 +1,12 @@
 <div class='container'>
   <h1>Questions:</h1>
     <% @questions.order('id DESC').each do |question| %>
-    <ul>
-      <li><a href='/questions/<%= question.id%>'><h4><%= question.title %></h4></a>by: <%= question.user.username %><br><br>
-              <%= question.body %><br>
-              Posted: <%= question.created_at.strftime("%b %d, 20%y") %></li>
 
-    </ul><br>
+      <div class="panel panel-default">
+      <div class="panel-heading"><a href='/questions/<%= question.id%>'><h4><%= question.title %></h4></a>by: <%= question.user.username %></div>
+              <div class="panel-body"><%= question.body %><br><br>
+              Posted: <%= question.created_at.strftime("%b %d, 20%y") %></div>
+
+    </div>
     <% end %>
 </div>

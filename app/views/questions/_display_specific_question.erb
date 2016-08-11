@@ -77,6 +77,66 @@
       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
       <input type="submit" value="Post Answer">
     </form>
+=======
+<div class="panel panel-primary">
+<div class="panel-heading"><h3><%= @question.title %></h3>by: <%= @question.user.username %><br>Posted: <%= @question.created_at.strftime("%b %d, 20%y") %></div>
+  <div class="panel-body">
+  <%= @question.body %>
+</div>
+</div>
+  <blockquote><a href="/questions/<%=@question.id%>/comments/new">Add a comment</a></blockquote>
+  <% if @question.comments %>
+    <ul>
+      <% @question.comments.each do |comment|%>
+      <div class="well well-sm" id="question_comment"><%= comment.body %> <em>- <%= comment.author %></em><br> Posted: <%= comment.created_at.strftime("%b %d, 20%y") %></div>
+    </ul>
+      <% end %>
+  <% end %>
+  <% if current_user %>
+  <h3>Add Your Answer</h3>
+  <div class="panel panel-default">
+  <div class="panel-body"
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <ul>
+        <li><%= error %></li>
+      </ul>
+      <% end %>
+  <% end %>
+    <form class="form-horizontal" action="/answers" method="post">
+      <div class="col-xs-8">
+      <input class="form-control input-lg" type="text" name="answer[body]" placeholder="Answer">
+    </div>
+      <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
+      <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
+       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
+      <div class="col-sm-10">
+      <br><button type="submit" class="btn btn-default">Post Answer</button></div>
+    </form>
+  <% end %>
+</div>
+</div>
+  <h3>Answers</h3>
+  <% @question.answers.each do |answer| %>
+    <div class="panel panel-info">
+      <div class="panel-heading" id="answer_heading"><%= answer.body %></div><div class="panel-body">Author: <%= answer.author %><br> Posted: <%= answer.created_at.strftime("%b %d, 20%y") %>
+              <div>
+                <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+                  <span><%= answer.votes.sum(:vote_count) %></span>
+                <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+              </div>
+    </div>
+    </div>
+    <blockquote><a href="/answers/<%=answer.id%>/comments/new">Add a comment</a><br></blockquote>
+      <% if answer.comments %>
+      <ul>
+          <% answer.comments.each do |comment|%>
+          <div class="well well-sm" id="answer_comment"><%= comment.body %> <em>- <%= comment.author %></em><br> Posted: <%= comment.created_at.strftime("%b %d, 20%y") %></div>
+      </ul>
+      <% end %>
+      <% end %>
+   <% end %>
+</div>
 
 <% end %>
 
