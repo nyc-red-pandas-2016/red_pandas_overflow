@@ -7,7 +7,8 @@ end
 
 post '/questions/:id/comments' do
   @question = Question.find(params[:id])
-  @comment = @question.comments.new(params[:comment])
+  @comment = @question.comments.new({ body: meow_comment(params[:comment][:body]), author: meow_comment(params[:comment][:author]), user_id: params[:comment][:user_id]})
+
   if @comment.save
     redirect "/questions/#{params[:id]}"
   else
@@ -25,7 +26,7 @@ end
 
 post '/answers/:id/comments' do
   @answer = Answer.find(params[:id])
-  @comment = @answer.comments.new(params[:comment])
+  @comment = @answer.comments.new({ body: meow_comment(params[:comment][:body]), author: meow_comment(params[:comment][:author]), user_id: params[:comment][:user_id]})
   if @comment.save
     redirect "/questions/#{@answer.question_id}"
   else

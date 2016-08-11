@@ -5,7 +5,7 @@ get '/answers/new' do
 end
 
 post '/answers' do
-  answer = Answer.new(params[:answer])
+  answer = Answer.new({body: meow_answer(params[:answer][:body]), author: meow_answer(params[:answer][:author]), user_id: params[:answer][:user_id], question_id: params[:answer][:question_id]})
   if answer.save
     redirect "/questions/#{params[:answer][:question_id]}"
   else
