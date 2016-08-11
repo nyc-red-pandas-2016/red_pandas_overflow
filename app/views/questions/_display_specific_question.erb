@@ -2,21 +2,21 @@
   <div class="container">
     <%= @question.body %><br>
   <!--   Display the Question Tags, if any -->
-    <% if @question.tags %>
-        <% @question.tags.each do |tag|%>
-          <%= tag.name %>
-        <% end %>
-    <% end %>
+      <% if @question.tags %>
+          <% @question.tags.each do |tag|%>
+            <%= tag.name %>
+          <% end %>
+      <% end %>
   <!-- Allow the user to post a comment -->
-    <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
+      <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
   <!--   Display existing comments to the question, if any -->
-    <% if @question.comments %>
-      <ul>
-        <% @question.comments.each do |comment|%>
-          <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
-        <% end %>
-      </ul>
-    <% end %>
+      <% if @question.comments %>
+        <ul>
+          <% @question.comments.each do |comment|%>
+            <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
+          <% end %>
+        </ul>
+      <% end %>
   </div>
 
   <h4><b>Answers:</b></h4>
@@ -36,6 +36,7 @@
           <% answer.comments.each do |comment|%>
             <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li><br>
           <% end %>
+        <% end %>
     <!-- Allow the user to comment on an Answer -->
 
       <p><a href="/answers/<%=answer.id%>/comments/new">add a comment</a></p><br>
