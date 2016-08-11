@@ -1,25 +1,35 @@
-get '/comments/new' do
-  erb :'comments/new'
+get '/questions/:id/comments/new' do
+  logged_in?
+
+  @question = Question.find(params[:id])
+  erb :'/comments/new'
 end
 
-
-post '/comments' do
-  comment = User.new(params[:comment][:body])
-  @message = "Comment Added!"
-  if comment.save
-    erb :'index'
+post '/questions/:id/comments' do
+  @question = Question.find(params[:id])
+  @comment = @question.comments.new(params[:comment])
+  if @comment.save
+    redirect "/questions/#{params[:id]}"
   else
-    @errors = user.errors.full_messages
+    @errors = @comment.errors.full_messages
     erb :'/comments/new'
   end
 end
 
-get '/comments/:id' do
-  erb :'comments/show'
+get '/answers/:id/comments/new' do
+  logged_in?
+
+  @answer = Answer.find(params[:id])
+  erb :'/comments/new'
 end
 
-delete '/comments/:id' do
-  comment = Comment.find(params[:id])
-  comment.delete
-  redirect :index
+post '/answers/:id/comments' do
+  @answer = Answer.find(params[:id])
+  @comment = @answer.comments.new(params[:comment])
+  if @comment.save
+    redirect "/questions/#{@answer.question_id}"
+  else
+    @errors = @comment.errors.full_messages
+    erb :'/comments/new'
+  end
 end

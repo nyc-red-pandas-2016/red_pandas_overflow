@@ -1,4 +1,6 @@
 get '/answers/new' do
+  logged_in?
+
   erb :'/answers/new'
 end
 
@@ -13,29 +15,9 @@ post '/answers' do
   end
 end
 
-get '/answers/:id' do
-  erb :'answers/show'
-end
-
-delete '/answers/:id' do
-  answer = Answer.find(params[:id])
-  answer.delete
-  redirect :index
-end
-
-get '/answers/:id/comments/new' do
-  @answer = Answer.find(params[:id])
-  require_user
-  erb :'/comments/new'
-end
-
-post '/answers/:id/comments' do
-  @answer = Answer.find(params[:id])
-  @comment = @answer.comments.new(params[:comment])
-  if @comment.save
-    redirect "/questions/#{@answer.question_id}"
-  else
-    @errors = @comment.errors.full_messages
-    erb :'/comments/new'
-  end
-end
+# Strecht goal
+# delete '/answers/:id' do
+#   answer = Answer.find(params[:id])
+#   answer.delete
+#   redirect :index
+# end

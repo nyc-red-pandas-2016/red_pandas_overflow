@@ -1,5 +1,6 @@
 get '/questions/new' do
-  require_user
+  logged_in?
+
   erb :'/questions/new'
 end
 
@@ -22,21 +23,3 @@ get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'/questions/_display_specific_question'
 end
-
-get '/questions/:id/comments/new' do
-  @question = Question.find(params[:id])
-  require_user
-  erb :'/comments/new'
-end
-
-post '/questions/:id/comments' do
-  @question = Question.find(params[:id])
-  @comment = @question.comments.new(params[:comment])
-  if @comment.save
-    redirect "/questions/#{params[:id]}"
-  else
-    @errors = @comment.errors.full_messages
-    erb :'/comments/new'
-  end
-end
-
