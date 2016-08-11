@@ -22,7 +22,6 @@
   <h4><b>Answers:</b></h4>
   <% @question.answers.each do |answer| %>
     <ul>
-      <li><b>Answer: </b><p><%= answer.body %></p> Author: <%= answer.author %> <br> Posted Date: <%= answer.created_at.strftime ("%b %d, 20%y") %><br><br>
 <!--   Display the Answer Tags, if any -->
         <% if answer.tags %>
             <% answer.tags.each do |tag|%>
@@ -31,14 +30,15 @@
         <% end %>
 
 <!--     Print comments for each Answer -->
+      <li><b>Answer: </b><%= answer.body %><br> Author: <%= answer.author %> <br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %><br><br>
+
         <% if answer.comments %>
           <% answer.comments.each do |comment|%>
-            <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li>
+            <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li><br>
           <% end %>
-        <% end %>
-
     <!-- Allow the user to comment on an Answer -->
-      <a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
+          <a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
+        <% end %>
 
         <li>
           <table>
