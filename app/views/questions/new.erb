@@ -5,6 +5,8 @@
     <input type="text" name="question[title]">
     <label for="question">Body:</label>
     <input type="text" name="question[body]">
+    <label for="tag">Tags (optional):</label>
+    <input type="text" name="tag[name]">
     <input type="hidden" name="question[user_id]" value="<%= current_user.id %>">
     <input type="submit" value="Submit">
   </form>

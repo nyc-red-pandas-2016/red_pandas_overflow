@@ -1,4 +1,4 @@
-<h1>Question: <%= @question.title %></h1>
+<h1><%= @question.title %></h1>
   <div class="container">
   <%= @question.body %><br>
   <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
@@ -14,7 +14,8 @@
   <h3><b>Answers:</b></h3>
   <% @question.answers.each do |answer| %>
     <ul>
-      <li><b>Answer: </b><p><%= answer.body %></p> Author: <%= answer.author %> <br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %><br><br>
+      <li><b>Answer: </b><p><%= answer.body %></p> Author: <%= answer.author %> <br> Posted Date: <%= answer.created_at.strftime ("%b %d, 20%y") %><br><br>
+
         <% if answer.comments %>
           <% answer.comments.each do |comment|%>
           <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li>
