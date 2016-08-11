@@ -5,7 +5,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  @question = Question.new({title: meow_question(params[:question][:title]), body: meow_question(params[:question][:body]), user_id: params[:question][:user_id]})
+  @question = Question.new({title: meow_title(params[:question][:title]), body: meow_question(params[:question][:body]), user_id: params[:question][:user_id]})
   if @question.save
     @question.tags.create(split_into_tags(params[:tag][:name]))
     redirect '/questions/show'
