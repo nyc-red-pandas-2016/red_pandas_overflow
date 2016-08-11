@@ -23,6 +23,22 @@
       <% end %>
 
     </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
+
+      <li>
+        <table>
+          <tr>
+            <td>
+              <div>
+                <a class="up_button" href="/vote/<%= answer.id %>/up">&#x21E7;</a>
+                  <span><%= answer.votes.sum(:vote_count) %></span>
+                <a class="down_button" href="/vote/<%= answer.id %>/down">&#x21E9;</a>
+              </div>
+            </td>
+          </tr>
+        </table>
+        Answer:<p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %></li>
+    </ul><br>
+
   <% end %>
 
   <h3>Answer Reply:</h3>
