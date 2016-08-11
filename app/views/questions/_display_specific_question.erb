@@ -1,22 +1,22 @@
 <h1><%= @question.title %></h1>
   <div class="container">
-  <%= @question.body %><br>
-<!--   Display the Question Tags, if any -->
-  <% if @question.tags %>
-      <% @question.tags.each do |tag|%>
-        <%= tag.name %>
-      <% end %>
-  <% end %>
-<!-- Allow the user to post a comment -->
-  <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
-<!--   Display existing comments to the question, if any -->
-  <% if @question.comments %>
-    <ul>
-      <% @question.comments.each do |comment|%>
-      <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
-    </ul>
-      <% end %>
-  <% end %>
+    <%= @question.body %><br>
+  <!--   Display the Question Tags, if any -->
+    <% if @question.tags %>
+        <% @question.tags.each do |tag|%>
+          <%= tag.name %>
+        <% end %>
+    <% end %>
+  <!-- Allow the user to post a comment -->
+    <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
+  <!--   Display existing comments to the question, if any -->
+    <% if @question.comments %>
+      <ul>
+        <% @question.comments.each do |comment|%>
+          <li class="comment"><%= comment.body %> <em>- <%= comment.author %></em></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <h4><b>Answers:</b></h4>
@@ -33,53 +33,49 @@
 <!--     Print comments for each Answer -->
         <% if answer.comments %>
           <% answer.comments.each do |comment|%>
-          <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li>
+            <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li>
+          <% end %>
         <% end %>
-      <% end %>
 
-    </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
+    <!-- Allow the user to comment on an Answer -->
+      <a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
 
-      <li>
-        <table>
-          <tr>
-            <td>
-              <div>
-                <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-                  <span><%= answer.votes.sum(:vote_count) %></span>
-                <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
-              </div>
-            </td>
-          </tr>
-        </table>
-        Answer:<p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %></li>
-    </ul><br>
+        <li>
+          <table>
+            <tr>
+              <td>
+                <div>
+                  <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
+                    <span><%= answer.votes.sum(:vote_count) %></span>
+                  <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+                </div>
+              </td>
+            </tr>
+          </table>
+      </li><br>
 
   <% end %>
 
-  <% if current_user %>
+<% if current_user %>
 
   <h3>Your Answer:</h3>
 
-<!-- Allow the user to comment on an Answer -->
-    </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
-  <% end %>
-
-  <% if @errors %>
-    <% @errors.each do |error| %>
-      <ul>
-        <li><%= error %></li>
-      </ul>
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <ul>
+          <li><%= error %></li>
+        </ul>
       <% end %>
-  <% end %>
+    <% end %>
 
-  <form action="/answers" method="post">
-    <input type="text" name="answer[body]" placeholder="Add answer">
-    <input type="text" name="tag[name]" placeholder="Tags (optional)">
-    <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
-    <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
-    <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
-    <input type="submit" value="Post Answer">
-  </form>
+    <form action="/answers" method="post">
+      <input type="text" name="answer[body]" placeholder="Add answer">
+      <input type="text" name="tag[name]" placeholder="Tags (optional)">
+      <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
+      <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
+      <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
+      <input type="submit" value="Post Answer">
+    </form>
 
 <% end %>
 
