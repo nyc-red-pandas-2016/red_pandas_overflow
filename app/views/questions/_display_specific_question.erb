@@ -1,7 +1,15 @@
 <h1><%= @question.title %></h1>
   <div class="container">
   <%= @question.body %><br>
+<!--   Display the Question Tags, if any -->
+  <% if @question.tags %>
+      <% @question.tags.each do |tag|%>
+        <%= tag.name %>
+      <% end %>
+  <% end %>
+<!-- Allow the user to post a comment -->
   <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
+<!--   Display existing comments to the question, if any -->
   <% if @question.comments %>
     <ul>
       <% @question.comments.each do |comment|%>
@@ -11,11 +19,18 @@
   <% end %>
   </div>
 
-  <h3><b>Answers:</b></h3>
+  <h4><b>Answers:</b></h4>
   <% @question.answers.each do |answer| %>
     <ul>
       <li><b>Answer: </b><p><%= answer.body %></p> Author: <%= answer.author %> <br> Posted Date: <%= answer.created_at.strftime ("%b %d, 20%y") %><br><br>
+<!--   Display the Answer Tags, if any -->
+        <% if answer.tags %>
+            <% answer.tags.each do |tag|%>
+              <%= tag.name %>
+            <% end %>
+        <% end %>
 
+<!--     Print comments for each Answer -->
         <% if answer.comments %>
           <% answer.comments.each do |comment|%>
           <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li>
@@ -45,6 +60,10 @@
 
   <h3>Your Answer:</h3>
 
+<!-- Allow the user to comment on an Answer -->
+    </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
+  <% end %>
+
   <% if @errors %>
     <% @errors.each do |error| %>
       <ul>
@@ -53,16 +72,14 @@
       <% end %>
   <% end %>
 
-    <form action="/answers" method="post">
+  <form action="/answers" method="post">
+    <input type="text" name="answer[body]" placeholder="Add answer">
+    <input type="text" name="tag[name]" placeholder="Tags (optional)">
+    <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
+    <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
+    <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
+    <input type="submit" value="Post Answer">
+  </form>
 
-      <input type="text" name="answer[body]" placeholder="Add answer">
-      <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
-      <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
-       <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
-      <input type="submit" value="Post Answer">
-
-    </form>
-  <% end %>
-
-
+<% end %>
 
