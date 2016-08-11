@@ -25,7 +25,7 @@
 <!--   Display the Answer Tags, if any -->
         <% if answer.tags %>
             <% answer.tags.each do |tag|%>
-              <%= tag.name %>
+              <em><%= tag.name %></em>
             <% end %>
         <% end %>
 
@@ -37,8 +37,9 @@
             <li class="comment"> Comment: <%= comment.body %> <em>- <%= comment.author %></em><br> Posted Date: <%= comment.created_at.strftime("%b %d, 20%y") %></li><br>
           <% end %>
     <!-- Allow the user to comment on an Answer -->
-          <a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
-        <% end %>
+
+      <p><a href="/answers/<%=answer.id%>/comments/new">add a comment</a></p><br>
+
 
         <li>
           <table>
