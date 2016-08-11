@@ -23,3 +23,20 @@ delete '/answers/:id' do
   answer.delete
   redirect :index
 end
+
+get '/answers/:id/comments/new' do
+  @answer = Answer.find(params[:id])
+  require_user
+  erb :'/comments/new'
+end
+
+post '/answers/:id/comments' do
+  @answer = Answer.find(params[:id])
+  @comment = @answer.comments.new(params[:comment])
+  if @comment.save
+    redirect "/questions/#{@answer.question_id}"
+  else
+    @errors = @comment.errors.full_messages
+    erb :'/comments/new'
+  end
+end

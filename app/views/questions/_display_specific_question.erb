@@ -1,11 +1,28 @@
 <h1>Question: <%= @question.title %></h1>
   <div class="container">
   <%= @question.body %>
+  <% if @question.comments %>
+      <% @question.comments.each do |comment|%>
+      <p class="comment"><%= comment.body %></p>
+      <p class="comment"><%= comment.author %></p>
+      <% end %>
+  <% end %>
+
+  <p><a href="/questions/<%=@question.id%>/comments/new">add a comment</a></p>
   </div>
   <% @question.answers.each do |answer| %>
     <ul>
       <li>Answer: <p><%= answer.body %></p> Author: <%= answer.author %> <br><br> Posted Date: <%= answer.created_at.strftime("%b %d, 20%y") %></li>
-    </ul><br>
+
+<!--     Print comments for each answer -->
+      <% if answer.comments %>
+        <% answer.comments.each do |comment|%>
+          <p class="comment"><%= comment.body %></p>
+          <p class="comment"><%= comment.author %></p>
+        <% end %>
+      <% end %>
+
+    </ul><a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
   <% end %>
 
   <h3>Answer Reply:</h3>
