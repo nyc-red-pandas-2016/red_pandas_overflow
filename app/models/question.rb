@@ -3,6 +3,7 @@ class Question < ActiveRecord::Base
 
   has_many :votes, as: :voteable
   has_many :answers
+  has_many :tags
 
   has_many :comments, as: :commentable
 
