@@ -1,7 +1,11 @@
 <div class="container">
   <h2>New Question</h2>
+<<<<<<< 4687de372a697d3e4149216297787616792de23f
   <p>*Tags are optional, multiple tags can be separated by spaces.</p>
   <form class="form-horizontal" role="form" action="/questions" method="post">
+=======
+  <form class="form-horizontal" action="/questions" method="post">
+>>>>>>> Fixed button problem on submit new answer
     <label class="control-label col-sm-1" for="question">Title:</label>
     <div class="col-xs-4">
     <input class="form-control input-sm" type="text" name="question[title]"></div>
@@ -10,11 +14,17 @@
     <div class="col-xs-4">
     <input class="form-control input-lg.custom" type="text" name="question[body]">
   </div><br><br>
+<<<<<<< 4687de372a697d3e4149216297787616792de23f
     <label class="control-label col-sm-1"for="tag">Tags:</label><br>
     <div class="col-xs-4">
     <input class="form-control input-sm" type="text" name="tag[name]">
   </div>
     <input type="hidden" name="question[user_id]" value="<%= current_user.id %>">
+=======
+    <label class="control-label col-sm-1"for="tag">Tags (optional):</label>
+      <input type="text" name="tag[name]">
+      <input type="hidden" name="question[user_id]" value="<%= current_user.id %>">
+>>>>>>> Fixed button problem on submit new answer
     <div class="col-sm-offset-1 col-sm-10">
     <br><br><button type="submit" class="btn btn-default">Meow!</button>
     </div>
