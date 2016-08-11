@@ -128,7 +128,7 @@ content_for_answers_2 = [
     :user_id => 1,
     :question_id =>4
     },
-    { :body => "Bring me the Big Duck. I could totally that guy down!! NO FEAR!!!",
+    { :body => "Bring me the Big Duck. I could totally take that guy down!! NO FEAR!!!",
     :author  => "Gandhi",
     :user_id => 3,
     :question_id => 10

@@ -9,6 +9,8 @@
     <div class="col-xs-4">
     <input class="form-control input-lg" type="text" name="question[body]">
   </div>
+    <label for="tag">Tags (optional):</label>
+    <input type="text" name="tag[name]">
     <input type="hidden" name="question[user_id]" value="<%= current_user.id %>">
     <div class="col-sm-offset-1 col-sm-10">
     <br><br><button type="submit" class="btn btn-default">Meow!</button>
