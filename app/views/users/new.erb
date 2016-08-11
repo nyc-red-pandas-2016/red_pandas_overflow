@@ -1,5 +1,3 @@
-
-
 <div class="container">
   <h2>Register a New Account!</h2>
 
@@ -11,14 +9,14 @@
     </ul>
   <% end %>
 
-<form class="" action="/users" method="post">
-  <label for="user[username]">Username:</label>
+<form class="form-horizontal" role="form" action="/users" method="post">
+  <label class="control-label col-sm-1" for="user[username]">Username:</label>
   <input type="text" name="user[username]"><br><br>
-    <label for="user[email]">Email:</label>
+    <label class="control-label col-sm-1" for="user[email]">Email:</label>
   <input type="text" name="user[email]"><br><br>
-  <label for="user[password]">Password:</label>
+  <label class="control-label col-sm-1" for="user[password]">Password:</label>
   <input type="password" name="user[password]"><br><br>
-  <input type="submit" value="Register"><br>
+  <input type="submit" class = ".btn-default" value="Register"><br>
 </form>
 
 </div>
