@@ -6,6 +6,11 @@ body a{
   color: #E32D78;
 }
 
+body a:hover{
+  text-decoration: none;
+  color: #FDD8E9;
+}
+
 .tab-pane{
   height:615px;
   overflow-y:scroll;
@@ -60,4 +65,16 @@ body a{
 
 .nav.navbar-nav.navbar-right li a {
     color: #FCD1E4;
+}
+
+.panel-default > .panel-heading-custom{
+  background-image: none;
+  background-color: #ed6b71;
+  color: #ffffff;
+}
+
+.panel-primary > .panel-heading-custom{
+background-image: none;
+  background-color: #ed6b71;
+  color: #ffffff;
 }
