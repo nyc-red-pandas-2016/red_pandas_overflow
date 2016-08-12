@@ -7,5 +7,10 @@ class Answer < ActiveRecord::Base
 
   validates :body, presence: true
   validates :author, presence: true
-  # Remember to create a migration!
+
+  validates :best_answer, uniqueness: true, if: :best_answer_is_true?
+
+  def best_answer_is_true?
+    best_answer == true
+  end
 end
