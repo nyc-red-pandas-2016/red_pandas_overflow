@@ -3,7 +3,7 @@
     <% @questions.order('id DESC').each do |question| %>
 
       <div class="panel panel-default">
-      <div class="panel-heading"><a href='/questions/<%= question.id%>'><h4><%= question.title %></h4></a>by: <%= question.user.username %></div>
+      <div class="panel-heading panel-heading-custom"><a href='/questions/<%= question.id%>'><h4><%= question.title %></h4></a>by: <%= question.user.username %></div>
               <div class="panel-body"><%= question.body %><br><br>
               Posted: <%= question.created_at.strftime("%b %d, 20%y") %></div>
       </div>

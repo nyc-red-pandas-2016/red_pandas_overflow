@@ -1,5 +1,14 @@
 <div class="panel panel-primary">
-<div class="panel-heading"><h3><%= @question.title %></h3>by: <%= @question.user.username %><br>Posted: <%= @question.created_at.strftime("%b %d, 20%y") %></div>
+<div class="panel-heading panel-heading-custom"><h3><%= @question.title %></h3>by: <%= @question.user.username %><br>Posted: <%= @question.created_at.strftime("%b %d, 20%y") %><br>
+  <% if current_user %>
+  <% if @question.user.id == current_user.id %>
+  <form method="post" action="/questions/<%=@question.id%>">
+  <input type="hidden" name="_method" value="delete"/>
+  <br><button type="submit" class="btn btn-default">Delete</button>
+  </form>
+  <% end %>
+  <% end %>
+</div>
   <div class="panel-body">
     <%= @question.body %><br><br>
       <% if @question.tags %>

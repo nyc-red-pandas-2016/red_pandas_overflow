@@ -24,3 +24,9 @@ get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :'/questions/_display_specific_question'
 end
+
+delete '/questions/:id' do
+  @question = Question.find(params[:id])
+  @question.destroy
+  redirect '/questions/show'
+end
