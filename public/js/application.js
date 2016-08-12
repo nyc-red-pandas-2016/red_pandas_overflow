@@ -1,14 +1,30 @@
 $(document).ready(function() {
 
+  // ajax for up vote
   $('.up_button').on('click', function(e){
     e.preventDefault();
-    var voteContainer = $(this)
+    var voteContainer = $(this);
+
     $.ajax({
       type: "GET",
       url: $(this).attr("href")
     }).done(function(response){
-      debugger;
-      $('').html(response);
-    })
+      var up_vote = voteContainer.parent().find(".vote_number");
+      $(up_vote).html("<span class='vote_number'>"+ response + "</span>");
+    });
   });
+
+  // ajax for down vote
+  $('.down_button').on('click', function(e) {
+    e.preventDefault();
+    var voteContainer = $(this);
+    $.ajax({
+      type: "GET",
+      url: $(this).attr("href")
+    }).done(function(response) {
+      var down_vote = voteContainer.parent().find(".vote_number");
+      $(down_vote).html("<span class='vote_number'>"+ response +"</span>");
+    });
+  });
+
 });
