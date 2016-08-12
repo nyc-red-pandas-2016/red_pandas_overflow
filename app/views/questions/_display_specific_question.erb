@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary panel-border-custom">
 <div class="panel-heading panel-heading-custom"><h3><%= @question.title %></h3>by: <%= @question.user.username %><br>Posted: <%= @question.created_at.strftime("%b %d, 20%y") %><br>
   <% if current_user %>
   <% if @question.user.id == current_user.id %>
@@ -47,8 +47,9 @@
             <div class="col-xs-8">
             <input class="form-control input-lg" type="text" name="answer[body]" placeholder="Answer">
             </div>
-              <label class="control-label col-sm-1"for="tag">Tags (optional):</label>
-                <input type="text" name="tag[name]">
+            <div class="col-xs-4">
+                <input class="form-control input-sm" type="text" name="tag[name]" placeholder="Tags (optional)">
+              </div>
                 <input type="hidden" name="answer[author]" value="<%= current_user.username %>" >
                 <input type="hidden" name="answer[user_id]" value="<%= current_user.id %>" >
                 <input type="hidden" name="answer[question_id]" value="<%= @question.id %>" >
@@ -73,6 +74,14 @@
                 <span class="vote_number"><%= answer.votes.sum(:vote_count) %></span>
               <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
             </div>
+            <% if current_user %>
+          <% if @answer.user.id == current_user.id %>
+          <form method="post" action="/answers/<%=@answer.id%>">
+          <input type="hidden" name="_method" value="delete"/>
+           <br><button type="submit" class="btn btn-default">Delete</button>
+          </form>
+          <% end %>
+          <% end %>
         </div>
       </div>
     <blockquote><a href="/answers/<%=answer.id%>/comments/new">Add a comment</a><br></blockquote>

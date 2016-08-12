@@ -16,9 +16,8 @@ post '/answers' do
   end
 end
 
-# Strecht goal
-# delete '/answers/:id' do
-#   answer = Answer.find(params[:id])
-#   answer.delete
-#   redirect :index
-# end
+delete '/answers/:id' do
+  @answer = Answer.find(params[:id])
+  @answer.delete
+  redirect :'questions/show'
+end
