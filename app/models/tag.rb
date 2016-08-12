@@ -4,5 +4,5 @@ class Tag < ActiveRecord::Base
   belongs_to :question
   belongs_to :answer
 
-   validates :name, presence: true
+  validates :name, presence: true
 end

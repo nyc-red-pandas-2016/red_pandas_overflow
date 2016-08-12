@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
 <div class="panel-heading"><h3><%= @question.title %></h3>by: <%= @question.user.username %><br>Posted: <%= @question.created_at.strftime("%b %d, 20%y") %></div>
   <div class="panel-body">
-    <%= @question.body %>
+    <%= @question.body %><br><br>
       <% if @question.tags %>
           <% @question.tags.each do |tag|%>
             <%= tag.name %>
@@ -30,25 +30,6 @@
               <% end %>
           <% end %>
 
-    <!-- Allow the user to comment on an Answer -->
-          <a href="/answers/<%=answer.id%>/comments/new">add a comment</a><br>
-        <% end %>
-
-        <li>
-          <table>
-            <tr>
-              <td>
-                <div>
-                  <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-                    <span class="vote_number"><%= answer.votes.sum(:vote_count) %></span>
-                  <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
-                </div>
-              </td>
-            </tr>
-          </table>
-      </li><br>
-
-
           <form class="form-horizontal" action="/answers" method="post">
             <div class="col-xs-8">
             <input class="form-control input-lg" type="text" name="answer[body]" placeholder="Answer">
@@ -65,29 +46,18 @@
     </div>
   <% end %>
 
-
-
--
-
-
-
-
-
-
-
-
   <h3>Answers</h3>
   <% @question.answers.each do |answer| %>
       <div class="panel panel-info">
-        <div class="panel-heading" id="answer_heading"><%= answer.body %></div><div class="panel-body">Author: <%= answer.author %><br> Posted: <%= answer.created_at.strftime("%b %d, 20%y") %>
+        <div class="panel-heading" id="answer_heading"><%= answer.body %></div><div class="panel-body">Author: <%= answer.author %><br> Posted: <%= answer.created_at.strftime("%b %d, 20%y") %><br>
             <% if answer.tags %>
               <% answer.tags.each do |tag|%>
                 <%= tag.name %>
               <% end %>
             <% end %>
-            <div>
+            <div calss="vote_container">
               <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
-                <span><%= answer.votes.sum(:vote_count) %></span>
+                <span class="vote_number"><%= answer.votes.sum(:vote_count) %></span>
               <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
             </div>
         </div>
@@ -102,5 +72,3 @@
       <% end %>
   <% end %>
 </div>
-
-

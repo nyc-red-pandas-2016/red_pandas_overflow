@@ -29,6 +29,11 @@
          <li class="active"><a href="/">Home</a></li>
          <li><a href="/questions/show">Questions</a></li>
          <li><a href="/questions/new">Ask A Question</a></li>
+         <li>
+           <form action="/tags/show" method"post">
+             <input id="search_bar" type="text" name="tag" placeholder="Search by tag">
+           </form>
+         </li>
          </ul>
           <ul class="nav navbar-nav navbar-right">
            <li><a href="/users/<%= current_user.id %>"><span class="glyphicon glyphicon-heart"></span> Profile</a></li>
@@ -40,8 +45,13 @@
           <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
           <li class="active"><a href="/">Home</a></li>
           <li><a href="/questions/show">Questions</a></li>
-      <% end %>
+          <li>
+            <form action="/tags/show" method="post">
+              <input id="search_bar" type="text" name="tag" placeholder="Search by tag">
+            </form>
+          </li>
         </ul>
+      <% end %>
   </div>
 </nav>
 <div class="container">
