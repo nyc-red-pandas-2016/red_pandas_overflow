@@ -7,7 +7,7 @@
 <img src="/images/glyphicons-542-cat.png">
 </span>
  <h2>Welcome, <%= current_user.username %>!</h2>
-<h3>Your questions:</h3>
+<h3>Questions you've asked:</h3>
 <table style="width:80%">
   <tr>
     <th class="profile_header"><h4>Question</h4></th>
@@ -19,14 +19,18 @@
     <td id="question_created_cell"><%= question.created_at.strftime("%b %d, 20%y") %><% end %></td>
   </tr>
 </table>
-<h3>Favorite posts:</h3>
+<h3>Questions you've answered:</h3>
 <table style="width:100%">
   <tr>
-    <th>Post</th>
+    <th>Answer</th>
     <th>Date Posted</th>
   </tr>
     <tr>
-      <td>post link</td>
+      <% @user_answers.each do |answer| %>
+    <tr>
+      <td id="question_cell"><a href="/questions/<%= answer.question.id %>"><%= answer.body %></a></td>
+    <td id="question_created_cell"><%= answer.created_at.strftime("%b %d, 20%y") %><% end %></td>
+  </tr>
     <td>date posted</td>
   </tr>
 </table>
