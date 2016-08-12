@@ -36,6 +36,5 @@ end
 
 get '/users/:id' do
   @user_questions = User.find_by(id: params[:id]).questions
-  @user_answers = User.find_by(id: params[:id]).questions
-  erb :'users/show'
+   erb :'users/show'
 end

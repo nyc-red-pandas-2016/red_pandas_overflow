@@ -1,9 +1,11 @@
 <div class="form_snippet">
 <h5>Add Your Comment:</h5>
   <form id="id_form" class="" action="/questions/<%=@question.id%>/comments" method="post">
-    <input id="comment_body" type="text" name="comment[body]" placeholder=" Comment"><br><br>
-    <input id="comment_pseud"type="text" name="comment[author]" placeholder="Pseudonym, if any"><br>
+    <div class="col-xs-4">
+    <input class="form-control input-sm" id="comment_body" type="text" name="comment[body]" placeholder=" Comment"></div><br><br>
+    <div class="col-xs-4">
+    <input class="form-control input-sm" id="comment_pseud"type="text" name="comment[author]" placeholder="Name"></div><br>
     <input type="hidden" name="comment[user_id]" value="<%=@current_user.id%>"><br>
-    <input type="submit" value="Comment"><br>
+    <button type="submit" class="btn btn-default">Comment</button><br>
   </form>
 </div>

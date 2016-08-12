@@ -72,11 +72,11 @@
             <div calss="vote_container">
               <a class="up_button" href="/vote/<%= answer.id %>/up"><span class="glyphicon glyphicon-circle-arrow-up"></span></a>
                 <span class="vote_number"><%= answer.votes.sum(:vote_count) %></span>
-              <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+              <a class="down_button" href="/vote/<%= answer.id %>/down"><span class="glyphicon glyphicon-circle-arrow-down custom-icon"></span></a>
             </div>
-            <% if current_user %>
-          <% if @answer.user.id == current_user.id %>
-          <form method="post" action="/answers/<%=@answer.id%>">
+          <% if current_user %>
+          <% if answer.user.id == current_user.id %>
+          <form method="post" action="/answers/<%=answer.id%>">
           <input type="hidden" name="_method" value="delete"/>
            <br><button type="submit" class="btn btn-default">Delete</button>
           </form>
