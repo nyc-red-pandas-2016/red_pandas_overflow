@@ -60,8 +60,20 @@
     </div>
   <% end %>
 
+
   <h3>Answers</h3>
-  <% @question.answers.each do |answer| %>
+    <% if @answer %>
+        <% @top_answer = [] %>
+          <% @question.answers.each do |answer| %>
+            <% @top_answer << answer %>
+            <% if answer.best_answer == true %>
+              <% @top_answer.unshift(answer).uniq! %>
+            <% end %>
+          <% end %>
+    <% else %>
+        <% @top_answer = @question.answers %>
+    <% end %>
+  <% @top_answer.each do |answer| %>
       <div class="panel panel-info">
         <div class="panel-heading" id="answer_heading"><%= answer.body %></div><div class="panel-body">Author: <%= answer.author %><br> Posted: <%= answer.created_at.strftime("%b %d, 20%y") %><br>
             <% if answer.tags %>
@@ -82,6 +94,7 @@
           </form>
           <% end %>
           <% end %>
+          <a href="/answers/<%= answer.id %>">Select Best Answer</a>
         </div>
       </div>
     <blockquote><a href="/answers/<%=answer.id%>/comments/new">Add a comment</a><br></blockquote>

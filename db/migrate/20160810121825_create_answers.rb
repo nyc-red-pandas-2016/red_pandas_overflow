@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.string  :author, null: false
       t.integer :user_id
       t.integer :question_id
+      t.boolean :best_answer, default: false
 
       t.timestamps
     end

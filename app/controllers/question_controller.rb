@@ -22,7 +22,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  # @answer = @question.answers.find(params[:id])
+  @answer = Answer.all.find_by(best_answer: true)
   erb :'/questions/_display_specific_question'
 end
 
