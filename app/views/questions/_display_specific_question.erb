@@ -18,14 +18,18 @@
       <% end %>
   </div>
 </div>
-  <blockquote><a href="/questions/<%=@question.id%>/comments/new">Add a comment</a></blockquote>
-    <% if @question.comments %>
+<% if @question.comments %>
       <ul>
         <% @question.comments.each do |comment|%>
-          <div class="well well-sm" id="question_comment"><%= comment.body %> <em>- <%= comment.author %></em><br> Posted: <%= comment.created_at.strftime("%b %d, 20%y") %></div>
+          <div id="comment_box" class="well well-sm" id="question_comment"><%= comment.body %> <em>- <%= comment.author %></em><br> Posted: <%= comment.created_at.strftime("%b %d, 20%y") %></div>
         <% end %>
+        <p class="comment_place"></p>
+       <div class="id_form"><blockquote><a id="add_comment" href="/questions/<%=@question.id%>/comments/new">Add a comment</a></blockquote>
+       </div>
       </ul>
     <% end %>
+
+
 
   <% if current_user %>
     <h3>Add Your Answer</h3>
