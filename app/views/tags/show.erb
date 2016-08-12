@@ -2,7 +2,12 @@
 <% if @question_array.length > 0 %>
 <ul>
 <% @question_array.each do |question| %>
-  <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+  <li><a href="/questions/<%= question.id %>"><%= question.title %></a><br>
+        <% if question.tags %>
+          <% question.tags.each do |tag|%>
+            <%= tag.name %>
+          <% end %>
+      <% end %></li>
 <% end %>
 <% else %>
 No results found.
