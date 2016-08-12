@@ -36,7 +36,7 @@ $(document).ready(function() {
       type: "GET",
       url: $(this).attr("href")
     }).done(function(response){
-      $(addComment).parent().html(response);
+      $(addComment).parent().append(response);
     });
   });
 
@@ -53,7 +53,7 @@ $(document).ready(function() {
        // </div>");
           $('.comment_place').append("<div id='comment_box' class='well well-sm' id='question_comment'>"+ response.comment.body + "- </em>" + response.comment.author + "</em>");
             $('.form_snippet').hide();
-
+           $('#add_comment').show();
       })
     });
 
