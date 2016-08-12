@@ -1,4 +1,4 @@
-
+<div class="form_snippet">
 <h5>Add Your Comment:</h5>
   <form id="id_form" class="" action="/questions/<%=@question.id%>/comments" method="post">
     <input id="comment_body" type="text" name="comment[body]" placeholder=" Comment"><br><br>
@@ -6,3 +6,4 @@
     <input type="hidden" name="comment[user_id]" value="<%=@current_user.id%>"><br>
     <input type="submit" value="Comment"><br>
   </form>
+</div>
