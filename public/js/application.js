@@ -27,4 +27,32 @@ $(document).ready(function() {
     });
   });
 
+  // ajax for add comment hyperlink click
+  $('#add_comment').on('click', function(e){
+    e.preventDefault();
+    $(this).hide();
+    var addComment = $(this);
+    $.ajax({
+      type: "GET",
+      url: $(this).attr("href")
+    }).done(function(response){
+      $(addComment).parent().html(response);
+    });
+  });
+
+  // ajax for submit comment form
+    $('.id_form').on('submit', function(e){
+      e.preventDefault();
+      var newComment = $(this).find('#id_form');
+     $.ajax({
+       type: "POST",
+       url: $(newComment).attr("action"),
+       data: $(newComment).serialize()
+      }).done(function(response) {
+          $('.comment_place').append("<div id='comment_box' class='well well-sm' id='question_comment'>"+ response.comment.body + "- </em>" + response.comment.author + "</em>");
+            this.reset();
+
+      })
+    });
+
 });
