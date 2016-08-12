@@ -1,9 +1,10 @@
 <h1>Search Results</h1>
+<% if @question_array.length > 0 %>
+<ul>
+<% @question_array.each do |question| %>
+  <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+<% end %>
+<% else %>
+No results found.
+<% end %>
 
-  <% if @possible_tags %>
-    <% @posible_tags.each do |tag| %>
-
-    <% end %>
-  <% else %>
-    <h3>No results found.</h3>
-  <% end %>
