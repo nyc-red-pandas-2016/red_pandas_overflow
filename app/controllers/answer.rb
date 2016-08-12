@@ -18,6 +18,6 @@ end
 
 delete '/answers/:id' do
   @answer = Answer.find(params[:id])
-  @answer.delete
+  @answer.destroy
   redirect :'questions/show'
 end
