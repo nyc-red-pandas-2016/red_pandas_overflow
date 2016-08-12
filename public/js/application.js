@@ -36,7 +36,7 @@ $(document).ready(function() {
       type: "GET",
       url: $(this).attr("href")
     }).done(function(response){
-      $(addComment).parent().html(response);
+      $(addComment).parent().append(response);
     });
   });
 
@@ -49,9 +49,11 @@ $(document).ready(function() {
        url: $(newComment).attr("action"),
        data: $(newComment).serialize()
       }).done(function(response) {
+       //  $('.comment_place').append("<div class='id_form'><blockquote><a id='add_comment' href='/questions/<%=@question.id%>/comments/new'>Add a comment</a></blockquote>
+       // </div>");
           $('.comment_place').append("<div id='comment_box' class='well well-sm' id='question_comment'>"+ response.comment.body + "- </em>" + response.comment.author + "</em>");
-            this.reset();
-
+            $('.form_snippet').hide();
+           $('#add_comment').show();
       })
     });
 

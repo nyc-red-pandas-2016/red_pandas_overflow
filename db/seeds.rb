@@ -1,23 +1,23 @@
 # SEED FILE INFORMATION
 
 content_for_users = [
-  { :username => "CauliflowerKing",
+  { :username => "CauliflowercatKing",
     :email  => "CK12@dbc.com",
     :password => "password"
     },
-  { :username => "AbrahamLincoln",
+  { :username => "AbrahameowLincoln",
     :email  => "Emancipator1863@dbc.com",
     :password => "password"
     },
-    { :username => "Gandhi",
+    { :username => "Gandhi_cat",
     :email  => "OriginalG@dbc.com",
     :password => "password"
     },
-    { :username => "LoveDoctor",
+    { :username => "LovemeowDoctor",
     :email  => "neill@dbc.com",
     :password => "password"
     },
-    { :username => "blue_mermaid",
+    { :username => "blue_mermaid_cat",
     :email  => "amazing_coder@dbc.com",
     :password => "password"
     },
